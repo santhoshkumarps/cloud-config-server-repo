@@ -15,4 +15,4 @@ eureka:
         defaultZone: http://localhost:8761/eureka/
 developer:
   name: "Santhoshkumar"
-  email: "san97kumarps@gmail.com"
+  email: "san14kumarps@gmail.com"
