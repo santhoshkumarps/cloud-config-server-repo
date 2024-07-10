@@ -23,10 +23,28 @@ management:
     web:
       exposure:
         include: "*"
+  #for circuit-breaker endpoints
+  health:
+    circuitbreaker:
+      enabled: true
+    show-details: always
   tracing:
     sampling:
       probability: 1.0
-
+#Circuit breaker configurations
+resilience4j:
+  circuitbreaker:
+    instance:
+      EMPLOYEE-SERVICE:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+  
 logging:
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
