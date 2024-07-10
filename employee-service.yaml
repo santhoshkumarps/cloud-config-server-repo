@@ -25,7 +25,7 @@ management:
         include: "*"
   #for circuit-breaker endpoints
   health:
-    circuitbreaker:
+    circuitbreakers:
       enabled: true
     show-details: always
   tracing:
@@ -34,7 +34,7 @@ management:
 #Circuit breaker configurations
 resilience4j:
   circuitbreaker:
-    instance:
+    instances:
       EMPLOYEE-SERVICE:
         registerHealthIndicator: true
         failureRateThreshold: 50
