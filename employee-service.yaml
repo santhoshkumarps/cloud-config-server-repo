@@ -24,10 +24,11 @@ management:
       exposure:
         include: "*"
   #for circuit-breaker endpoints
-  health:
-    circuitbreakers:
-      enabled: true
-    show-details: always
+  endpoint:
+    health:
+      circuitbreakers:
+        enabled: true
+      show-details: always
   tracing:
     sampling:
       probability: 1.0
