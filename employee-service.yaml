@@ -17,26 +17,19 @@ developer:
   name: Santhosh
   email: santhosh.don@rediffmail.com
 
-
-resilience4j:
-  circuitbreaker:
-    instances:
-      exampleClient:
-        registerHealthIndicator: true
-        ringBufferSizeInClosedState: 5
-        ringBufferSizeInHalfOpenState: 2
-        waitDurationInOpenState: 5s
-        failureRateThreshold: 50
-        eventConsumerBufferSize: 10
+#Resilience 4j configuration is in application.yaml
         
 management:
+  health:
+    circuitbreakers:
+      enabled: true
   endpoints:
     web:
       exposure:
         include: '*'
   endpoint:
-    resilience4j:
-      enabled: true
+    health:
+      show-details: always
 logging:
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
